@@ -55,6 +55,76 @@ SUPPLIERS = [
         "days": [5, 5],
         "shipping": 500,
     },
+    {
+        "id": "hinode",
+        "name": "日ノ出デバイス",
+        "tag": "すぐに使える部品をお届け",
+        "color": "#a47832",
+        "prices": [2690, 1770],
+        "stock": [90, 80],
+        "days": [2, 2],
+        "shipping": 0,
+    },
+    {
+        "id": "tokai",
+        "name": "東海コンポーネント",
+        "tag": "小ロットから支える調達",
+        "color": "#3f687e",
+        "prices": [2280, 1550],
+        "stock": [12, 16],
+        "days": [4, 3],
+        "shipping": 700,
+    },
+    {
+        "id": "seiwa",
+        "name": "清和エレクトロ",
+        "tag": "現場に寄り添う部品供給",
+        "color": "#705e87",
+        "prices": [2390, 1620],
+        "stock": [65, 55],
+        "days": [6, 4],
+        "shipping": 900,
+    },
+    {
+        "id": "aoba",
+        "name": "青葉テクノ",
+        "tag": "計画的な調達をサポート",
+        "color": "#60814c",
+        "prices": [2250, 1520],
+        "stock": [72, 50],
+        "days": [9, 10],
+        "shipping": 400,
+    },
+    {
+        "id": "minato",
+        "name": "港マテリアル",
+        "tag": "急ぎの部品も手早く",
+        "color": "#447c88",
+        "prices": [2550, 1730],
+        "stock": [96, 85],
+        "days": [1, 1],
+        "shipping": 1000,
+    },
+    {
+        "id": "asahi",
+        "name": "旭パーツセンター",
+        "tag": "日々のものづくりを支える",
+        "color": "#a3564f",
+        "prices": [2360, 1610],
+        "stock": [28, 35],
+        "days": [7, 6],
+        "shipping": 650,
+    },
+    {
+        "id": "sakura",
+        "name": "桜井サプライ",
+        "tag": "部品選びの身近な窓口",
+        "color": "#876b67",
+        "prices": [2290, 1530],
+        "stock": [0, 10],
+        "days": [3, 4],
+        "shipping": 500,
+    },
 ]
 PRODUCTS = [
     {"sku": "GS-FAN120", "name": "冷却ファン 120mm", "kind": "COOLING / 冷却部品"},
@@ -99,6 +169,7 @@ async def config():
     return {
         "jev_available": bool(KEY),
         "products": PRODUCTS,
+        "suppliers": [{"id": s["id"], "name": s["name"]} for s in SUPPLIERS],
         "deadline": (today() + timedelta(days=7)).isoformat(),
         "model": MODEL,
     }
@@ -151,7 +222,7 @@ async def stop():
 
 def event(state, message, detail=""):
     state["events"].append({"message": message, "detail": detail})
-    state["events"] = state["events"][-30:]
+    state["events"] = state["events"][-80:]
 
 
 async def capture(page, state):
