@@ -416,7 +416,7 @@ async def supplier_page(supplier_id: str, q: str = "", product: str = ""):
     </style><header><div class="brand">{s["name"]} <small> / PARTS STORE</small></div><span>{s["tag"]}</span></header>
     <nav><span>商品を探す　 /　 はじめての方へ　 /　 お届けについて</span><span>架空の仕入先サイト</span></nav>
     {"" if item else f'<form><input data-action="fill:search" name="q" aria-label="検索欄に型番を入力" placeholder="型番・商品名から探す" value="{html.escape(q, quote=True)}"><button data-action="click:search">検索</button></form>'}
-    <main>{content}</main><footer>個人開発デモ · 会社・商品・取引条件はすべて架空です</footer></html>"""
+    <main>{content}</main><footer>公開デモ · 会社・商品・取引条件はすべて架空です</footer></html>"""
 
 
 def part_svg(sku):
